@@ -114,21 +114,3 @@ order by users.id asc
 
 
 
-----------notes --------
-select
-	case
-		when (first_paid_order_date < first_freebie_order_date)
-			and (first_paid_order_date < first_entry_date)
-			and first_paid_order_date is not null
-		then 'paid order'
-
-		when (first_freebie_order_date < first_paid_order_date)
-			and (first_freebie_order_date < first_entry_date)
-			and first_freebie_order_date is not null
-		then 'freebie'
-
-		when (first_entry_date < first_paid_order_date)
-			and (first_entry_date < first_freebie_order_date)
-			and first_entry_date is not null
-		then 'giveaway'
-	else 'other'
